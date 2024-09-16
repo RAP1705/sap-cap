@@ -1,0 +1,241 @@
+@server = http://localhost:4004
+@auth = Authorization: Basic alice:
+
+
+### Books
+# @name Books_GET
+GET {{server}}/odata/v4/catalog/Books
+{{auth}}
+
+
+### Books
+# @name Books_POST
+POST {{server}}/odata/v4/catalog/Books
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": "17692714-faba-4e3e-a034-3b284d7f89ae",
+  "title": "title-17692714",
+  "author": {
+    "ID": "28265684-bd75-4e61-8921-e52bc3f6c5b1"
+  },
+  "stock": 40,
+  "price": 27
+}
+
+
+### Books
+# @name Books_PATCH
+PATCH {{server}}/odata/v4/catalog/Books/17692714-faba-4e3e-a034-3b284d7f89ae
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": "17692714-faba-4e3e-a034-3b284d7f89ae",
+  "title": "title-17692714",
+  "author": {
+    "ID": "28265684-bd75-4e61-8921-e52bc3f6c5b1"
+  },
+  "stock": 40,
+  "price": 27
+}
+
+
+### Books
+# @name Books_DELETE
+DELETE {{server}}/odata/v4/catalog/Books/17692714-faba-4e3e-a034-3b284d7f89ae
+Content-Type: application/json
+{{auth}}
+
+
+### Authors
+# @name Authors_GET
+GET {{server}}/odata/v4/catalog/Authors
+{{auth}}
+
+
+### Authors
+# @name Authors_POST
+POST {{server}}/odata/v4/catalog/Authors
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": "28265684-bd75-4e61-8921-e52bc3f6c5b1",
+  "name": "name-28265684"
+}
+
+
+### Authors
+# @name Authors_PATCH
+PATCH {{server}}/odata/v4/catalog/Authors/28265684-bd75-4e61-8921-e52bc3f6c5b1
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": "28265684-bd75-4e61-8921-e52bc3f6c5b1",
+  "name": "name-28265684"
+}
+
+
+### Authors
+# @name Authors_DELETE
+DELETE {{server}}/odata/v4/catalog/Authors/28265684-bd75-4e61-8921-e52bc3f6c5b1
+Content-Type: application/json
+{{auth}}
+
+
+### Orders
+# @name Orders_GET
+GET {{server}}/odata/v4/catalog/Orders
+{{auth}}
+
+
+### Orders
+# @name Orders_POST
+POST {{server}}/odata/v4/catalog/Orders
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": "27283652-c9a3-4754-9cbe-1db77d35e5e8",
+  "comment": "comment-27283652",
+  "Items": [
+    {
+      "pos": 24293106,
+      "quantity": 9,
+      "book": {
+        "ID": "17692714-faba-4e3e-a034-3b284d7f89ae"
+      }
+    },
+    {
+      "pos": 24293107,
+      "quantity": 73,
+      "book": {
+        "ID": "17692714-faba-4e3e-a034-3b284d7f89ae"
+      }
+    }
+  ],
+  "partner": {
+    "partner": "202"
+  }
+}
+
+
+### Orders
+# @name Orders_PATCH
+PATCH {{server}}/odata/v4/catalog/Orders/27283652-c9a3-4754-9cbe-1db77d35e5e4
+Content-Type: application/json
+{{auth}}
+
+{
+  "ID": "27283652-c9a3-4754-9cbe-1db77d35e5e4",
+  "comment": "comment-27283652",
+  "Items": [
+    {
+      "pos": 24293106,
+      "quantity": 9,
+      "book": {
+        "ID": "17692714-faba-4e3e-a034-3b284d7f89ae"
+      }
+    },
+    {
+      "pos": 24293107,
+      "quantity": 73,
+      "book": {
+        "ID": "17692714-faba-4e3e-a034-3b284d7f89ae"
+      }
+    }
+  ],
+  "partner": {
+    "partner": "r-31541641"
+  }
+}
+
+
+### Orders
+# @name Orders_DELETE
+DELETE {{server}}/odata/v4/catalog/Orders/27283652-c9a3-4754-9cbe-1db77d35e5e4
+Content-Type: application/json
+{{auth}}
+
+
+### Customer
+# @name Customer_GET
+GET {{server}}/odata/v4/catalog/Customer
+{{auth}}
+
+
+### Customer
+# @name Customer_POST
+POST {{server}}/odata/v4/catalog/Customer
+Content-Type: application/json
+{{auth}}
+
+{
+  "partner": "r-31541641",
+  "name": "name-31541641"
+}
+
+
+### Customer
+# @name Customer_PATCH
+PATCH {{server}}/odata/v4/catalog/Customer/r-31541641
+Content-Type: application/json
+{{auth}}
+
+{
+  "partner": "r-31541641",
+  "name": "name-31541641"
+}
+
+
+### Customer
+# @name Customer_DELETE
+DELETE {{server}}/odata/v4/catalog/Customer/r-31541641
+Content-Type: application/json
+{{auth}}
+
+
+### Orders.Items
+# @name OrdersItems_GET
+GET {{server}}/odata/v4/catalog/Orders.Items
+{{auth}}
+
+
+### Orders.Items
+# @name OrdersItems_POST
+POST {{server}}/odata/v4/catalog/Orders.Items
+Content-Type: application/json
+{{auth}}
+
+{
+  "pos": 24293106,
+  "quantity": 9,
+  "book": {
+    "ID": "17692714-faba-4e3e-a034-3b284d7f89ae"
+  }
+}
+
+
+### Orders.Items
+# @name OrdersItems_PATCH
+PATCH {{server}}/odata/v4/catalog/Orders.Items(up_=[object Object],pos=24293106)
+Content-Type: application/json
+{{auth}}
+
+{
+  "pos": 24293106,
+  "quantity": 9,
+  "book": {
+    "ID": "17692714-faba-4e3e-a034-3b284d7f89ae"
+  }
+}
+
+
+### Orders.Items
+# @name OrdersItems_DELETE
+DELETE {{server}}/odata/v4/catalog/Orders.Items(up_=[object Object],pos=24293106)
+Content-Type: application/json
+{{auth}}

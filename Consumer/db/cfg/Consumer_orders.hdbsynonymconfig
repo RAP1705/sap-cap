@@ -1,0 +1,10 @@
+{
+    "CONSUMER_ORDERS":{
+        "target": {
+            "object": "MY_BOOKSHOP_ORDERS",
+            "schema.configure": "ups-master-db/schema"
+            
+            
+        }
+    }
+}

@@ -1,0 +1,14 @@
+{
+    "ups-master-db": {
+        "object_owner": {
+            "container_roles": [
+                "MY_BOOKSHOP_ACCESS_G#"
+            ]
+        },
+        "application_user": {
+            "container_roles": [
+                "MY_BOOKSHOP_ACCESS"
+            ]
+        }
+    }
+}

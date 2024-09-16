@@ -1,0 +1,66 @@
+_schema-version: 3.3.0
+ID: Consumer
+description: A simple CAP project.
+version: 1.0.0
+modules:
+- name: Consumer-srv
+  type: nodejs
+  path: gen/srv
+  requires:
+  - name: Consumer-db
+  - name: Consumer-auth
+  provides:
+  - name: srv-api
+    properties:
+      srv-url: ${default-url}
+  parameters:
+    buildpack: nodejs_buildpack
+    readiness-health-check-http-endpoint: /health
+    readiness-health-check-type: http
+  build-parameters:
+    builder: npm
+- name: Consumer-db-deployer
+  type: hdb
+  path: gen/db
+  requires:
+  - name: Consumer-db
+    properties:
+      TARGET_CONTAINER: ~{hdi-container-name}
+  - name: ups-master-db
+    group: SERVICE_REPLACEMENTS
+    properties:
+      key: ups-master-db
+      service: ~{ups-master-db}
+  parameters:
+    buildpack: nodejs_buildpack
+resources:
+- name: Consumer-db
+  type: com.sap.xs.hdi-container
+  parameters:
+    service: hana
+    service-plan: hdi-shared
+  properties:
+    hdi-container-name: ${service-name}
+- name: Consumer-auth
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      tenant-mode: dedicated
+      xsappname: Consumer-${org}-${space}
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+- name: ups-master-db
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: "ups-master-db"
+  properties:
+    ups-master-db: ${service-name}
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+  - builder: custom
+    commands:
+    - npm ci
+    - npx cds build --production

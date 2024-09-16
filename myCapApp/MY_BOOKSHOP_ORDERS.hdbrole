@@ -1,0 +1,14 @@
+{
+
+    "role": {
+        "name": "MY_BOOKSHOP_ACCESS",
+        "object_privileges": [{
+
+            "name": "MY_BOOKSHOP_ORDERS",
+            "type": "TABLE",
+            "privileges": ["SELECT","INSERT"]
+
+        }
+        ]
+    }
+}

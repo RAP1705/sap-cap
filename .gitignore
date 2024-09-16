@@ -1,0 +1,8 @@
+
+# auto generated wildcard
+myCapApp/db/.env
+# auto generated wildcard
+Consumer/db/.env
+myCapApp/node_modules/*
+myCapApp/mta_archives/*
+myCapApp/gen/*
